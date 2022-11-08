@@ -11,7 +11,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 public class AppConfig {
 	
 	@Value("${jwt.secret}")
-	private String JwtSecret;
+	private String jwtSecret;
 	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
@@ -21,7 +21,7 @@ public class AppConfig {
 	@Bean
 	public JwtAccessTokenConverter acessTokenConverter() {
 		JwtAccessTokenConverter tokenConverter = new JwtAccessTokenConverter();
-		tokenConverter.setSigningKey(JwtSecret);
+		tokenConverter.setSigningKey(jwtSecret);
 		return tokenConverter;
 	}
 	

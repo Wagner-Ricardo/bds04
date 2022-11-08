@@ -17,11 +17,11 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
-	//@Value("${security.outh2.client.client-id}")
-	@Value("${security.outh2.client.client-id}")
+	
+	@Value("${security.oauth2.client.client-id}")
 	private String clientId;
 	
-	@Value("${security.outh2.client.client-secret}")
+	@Value("${security.oauth2.client.client-secret}")
 	private String clientSecret;
 	
 	@Value("${jwt.duration}")
@@ -42,7 +42,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security)throws Exception {
-		security.tokenKeyAccess("permitAll()").checkTokenAccess("isAthenticated()");
+		security.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
 		
 	}
 	
@@ -50,7 +50,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception{
 		clients.inMemory()
 		.withClient(clientId)
-		.secret(passwordEncoder.encode( clientSecret))
+		.secret(passwordEncoder.encode(clientSecret))
 		.scopes("read, write")
 		.authorizedGrantTypes("password")
 		.accessTokenValiditySeconds(jwtDuration);

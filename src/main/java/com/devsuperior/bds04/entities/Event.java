@@ -74,5 +74,9 @@ public class Event {
 		return city;
 	}
 
+	public void setCity(City city) {
+		this.city = city;
+	}
+
 	
 }
