@@ -25,6 +25,7 @@ public class Event {
 	@JoinColumn(name = "city_id")
 	private City city;
 	
+	
 	public Event() {
 	}
 
@@ -35,7 +36,6 @@ public class Event {
 		this.url = url;
 		this.city = city;
 	}
-
 
 
 	public Long getId() {
@@ -77,6 +77,10 @@ public class Event {
 	public void setCity(City city) {
 		this.city = city;
 	}
+
+	
+
+	
 
 	
 }
